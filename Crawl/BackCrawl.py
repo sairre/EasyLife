@@ -319,16 +319,25 @@ class SpCrawl(BaseCrawl):
             return None
         newPath = self.m_NovelName + str(novelItem['index'])
 
-        fpNew = open('%s.txt' % (newPath),'wb+')
+        start_index = 0
+        fpNew = open('%s_%s.txt' % (newPath, start_index),'wb+')
         IndexArry = self.chapterDbMgr.QueryAllIndex()
-
+        total_count = 0
         for item in IndexArry:
             filePath = ('%s/%d.txt') % (newPath, item['index'])
             if os.path.exists(filePath):
+                if total_count > (1024 * 1024 * 2):
+                    total_count = 0
+                    fpNew.close()
+                    start_index = start_index + 1
+                    fpNew = open('%s_%s.txt' % (newPath, start_index),'wb+')
+                                
                 fp = open(filePath,'r')
                 content = fp.read()
                 fpNew.write(content)
                 fp.close()
+                file_byte_size = os.path.getsize(filePath)
+                total_count = total_count + file_byte_size
         fpNew.close()
 
 def InitRule():

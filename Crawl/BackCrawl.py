@@ -326,7 +326,7 @@ class SpCrawl(BaseCrawl):
         for item in IndexArry:
             filePath = ('%s/%d.txt') % (newPath, item['index'])
             if os.path.exists(filePath):
-                if total_count > (1024 * 1024 * 2):
+                if total_count > (1024 * 1024 * 20):
                     total_count = 0
                     fpNew.close()
                     start_index = start_index + 1

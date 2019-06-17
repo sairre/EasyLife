@@ -2,6 +2,7 @@
 <!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
 <Object>
 	<Property ID="1" webUrl="www.biquge.com.tw" parseUrl="http://www.biquge.com.tw/" novelnameRule='//div[@id="info"]/h1/text()' chapterRule="//dd/a" titleRule='//div[@class="bookname"]/h1/text()' ContentRule='//div[@id="content"]/text()'/>
-	<Property ID="2" webUrl="www.23us.so" parseUrl="" novelnameRule='//div[@class="bdsub"]/dl/dd/h1/text()' chapterRule="//tr/td/a" titleRule='//div[@class="bdsub"]/dl/dd/h1/text()' ContentRule='//dd[@id="contents"]/text()'/>
-	<Property ID="3" webUrl="www.23txt.com" parseUrl="http://www.23txt.com/" novelnameRule='//div[@id="info"]/h1/text()' chapterRule="//dd/a" titleRule='//div[@class="bookname"]/h1/text()' ContentRule='//div[@id="content"]/text()'/>
+	<Property ID="2" webUrl="www.biquge.info" parseUrl="novel_name" novelnameRule='//div[@id="info"]/h1/text()' chapterRule="//dd/a" titleRule='//div[@class="bookname"]/h1/text()' ContentRule='//div[@id="content"]/text()'/>
+	<Property ID="3" webUrl="www.23us.so" parseUrl="" novelnameRule='//div[@class="bdsub"]/dl/dd/h1/text()' chapterRule="//tr/td/a" titleRule='//div[@class="bdsub"]/dl/dd/h1/text()' ContentRule='//dd[@id="contents"]/text()'/>
+	<Property ID="4" webUrl="www.23txt.com" parseUrl="http://www.23txt.com/" novelnameRule='//div[@id="info"]/h1/text()' chapterRule="//dd/a" titleRule='//div[@class="bookname"]/h1/text()' ContentRule='//div[@id="content"]/text()'/>
 </Object>

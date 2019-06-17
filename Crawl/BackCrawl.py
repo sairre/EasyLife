@@ -42,7 +42,7 @@ class BaseCrawl:
     def __init__(self, url):
         self.bCreate = False
         self.m_NovelUrl = None
-        self.max_num_thread = 15
+        self.max_num_thread = 30
         self.novelDbMgr = None
         self.chapterDbMgr = None
         self.ruleDbMgr = None
@@ -236,7 +236,11 @@ class BaseCrawl:
             return False
         nexUrl = curtask['chapterUrl']
         index = curtask['index']
+
         fullUrl = self.m_ParseRottUrl + nexUrl
+        if self.m_ParseRottUrl == "novel_name":
+            fullUrl = self.m_NovelUrl + "/" + nexUrl
+        
         try:
             html_page = self.ReadHtmlPage(fullUrl)
             if html_page == None:
@@ -341,6 +345,7 @@ class SpCrawl(BaseCrawl):
         fpNew.close()
 
 def InitRule():
+    print "init rule"
     ruleDb = RuleDbManager(5)
     ruleDb.ClearTable()
     rulePath = os.path.abspath('WebRule.xml')
@@ -349,14 +354,17 @@ def InitRule():
 
     # get all elements
     elementArray = elementobj.getElementsByTagName("Property")
+    print elementArray
     for index in range(len(elementArray)):
         # get all node list in some one element
+        print index
         nodeAttrMap = elementArray.item(index).attributes
         
-    newRule = {}
-    for i in range(nodeAttrMap.length):
-        newRule[nodeAttrMap.item(i).name] = nodeAttrMap.item(i).value
-    ruleDb.AddRule(newRule)
+        newRule = {}
+        for i in range(nodeAttrMap.length):
+            newRule[nodeAttrMap.item(i).name] = nodeAttrMap.item(i).value
+        
+        ruleDb.AddRule(newRule)
     
 def UpdateNovelList():
     novelPath = os.path.abspath('NovelList.xml')
